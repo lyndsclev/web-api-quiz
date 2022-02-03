@@ -1,0 +1,43 @@
+/* GLOBAL */
+
+:root {
+    --hot-pink: #ff0080;
+    --dark-gray: #595959;
+    --light-gray: #eeeeeeff;
+    --light-pink: #ffcae47b;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* HEADER */
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 30px 50px;
+    background-color: var(--light-gray);
+}
+
+/* FOOTER */
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    padding: 30px 50px;
+    background-color: var(--light-gray);
+
+}
