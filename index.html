@@ -13,17 +13,22 @@
     
     <header>
         <p>VIEW HIGH SCORES</p>
-        <div id="timer"></div>
+        <div>TIME: <span id="timerEl"></span></div>
     </header>
 
     <!-- Main -->
+    <main>
 
-    <main id="quiz">
-        <section id="content"></section>
-        <section>
-            <ul id="questions"></ul>
-        </section>
-        <section id="results"></section>
+    <div id="startCont">
+        <h2>Welcome to the Donut Quiz!</h2>
+        <p>Try to answer the following questions within the time limit. Keep in mind that incorrect answers will deduct 10 seconds from your time remaining! The quiz is over after you've answered all 4 questions or when the time runs out.</p>
+        <button id="startBtnEl">START</button>
+    </div>
+
+    <div id="quizCont" class="hide"></div>
+        
+    <div id="endCont" class="hide"></div>
+
     </main>
 
     <!-- Footer -->

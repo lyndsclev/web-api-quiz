@@ -1,6 +1,13 @@
 
-var content = document.querySelector("#content");
-var questions = document.querySelector("#questions");
+var startCont = document.querySelector("#startCont");
+var startBtnEl = document.querySelector("#startBtnEl");
+var quizCont = document.querySelector("#quizCont");
+
+// timer global variables 
+
+var time = 75
+var timerEl = document.querySelector("#timerEl");
+var timer;
 
 // questions array 
 
@@ -47,47 +54,42 @@ var questionsArr = [
     },
 ];
 
-
-// on page load, create start message and button 
+// on start button click, start timer
 
 function start () {
-    var startTitle = document.createElement("h2")
-    startTitle.textContent = "Welcome to the Donut Quiz!";
-    content.appendChild(startTitle);
+    timer = setInterval(clock, 1000);
+    timerEl.textContent = time; 
 
-    var startMsg = document.createElement("p")
-    startMsg.textContent = "Try to answer the following questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by 10 seconds! The quiz is over after you've answered all 5 questions or when the time runs out.";
-    content.appendChild(startMsg);
+    // hide start content
 
-    var startBtn = document.createElement("button");
-    startBtn.className = "btns";
-    startBtn.textContent = "START";
-    content.appendChild(startBtn);
+    startCont.className = "hide";
 
-    // on start button click, start timer
+    // un-hide quiz content 
 
-    // on start button click, remove start content, begin questions 
+    quizCont.classList.remove("hide");
 
-    function ask () { 
-        startTitle.remove();
-        startMsg.remove();
-        startBtn.remove();
+    // create quiz question text
 
-        // PICK UP HERE!!! // create element(s) for questionsArr to populate
+    // create quiz buttons
 
-        var question = document.createElement("li"); 
+    // loop through questions array 
 
-        // loop through questions 
+}
 
-        // on answer button click: display result, display next question, if answer is wrong, deduct 10 seconds from timer
+startBtnEl.addEventListener('click', start);
 
-    };
-    
-    startBtn.addEventListener('click', ask);
+function clock () {
 
-};
+    time--;
+    timerEl.textContent = time;
 
-window.addEventListener('load', start);
+    if (time <= 0) {
+        endQuiz();
+
+    }
+}
+
+function endQuiz() {}
 
 
 // end quiz by either: timer run out or answered all questions
@@ -97,3 +99,4 @@ window.addEventListener('load', start);
 // save score in local storage
 
 // include button option to clear high score(s)
+
