@@ -1,9 +1,10 @@
 
 var content = document.querySelector("#content");
+var questions = document.querySelector("#questions");
 
 // questions array 
 
-var questions = [
+var questionsArr = [
     {
         question: "How many donuts are made in the US each year?", 
         answers: {
@@ -71,9 +72,16 @@ function start () {
         startTitle.remove();
         startMsg.remove();
         startBtn.remove();
-    };
 
-    // loop through questions 
+        // PICK UP HERE!!! // create element(s) for questionsArr to populate
+
+        var question = document.createElement("li"); 
+
+        // loop through questions 
+
+        // on answer button click: display result, display next question, if answer is wrong, deduct 10 seconds from timer
+
+    };
     
     startBtn.addEventListener('click', ask);
 
@@ -81,9 +89,6 @@ function start () {
 
 window.addEventListener('load', start);
 
-
-
-// on answer button click: display result, display next question, if answer is wrong, deduct 10 seconds from timer
 
 // end quiz by either: timer run out or answered all questions
 
