@@ -1,10 +1,11 @@
 /* GLOBAL */
 
 :root {
-    --hot-pink: #ff0080;
-    --dark-gray: #595959;
-    --light-gray: #eeeeeeff;
-    --light-pink: #ffade6;
+    --dark-teal: #045D5D;
+    --light-teal: #1EA1A1;
+    --dark-brown: #5C4033;
+    --light-brown: #C89D7C;
+   
 }
 
 * {
@@ -25,15 +26,17 @@ body {
 
 header {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; 
     justify-content: space-between;
     padding: 30px 50px;
-    background-color: var(--light-gray);
+    background-color: var(--light-brown);
+    color: white;
     font-size: 20px;
+    font-weight: bold;
 }
 
 header p:hover {
-    color: var(--hot-pink);
+    color: var(--light-teal);
 }
 
 /* MAIN */
@@ -42,32 +45,29 @@ main {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 100px;
-}
-
-.hide {
-    display: none;
+    margin: 50px 100px;
 }
 
 #startCont {
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: var(--dark-brown);
 }
 
 #startCont h2 {
-    margin-bottom: 30px;
     font-size: 36px;
+    margin-bottom: 30px;
 }
 
 #startCont p {
-    margin-bottom: 30px;
     font-size: 20px;
+    margin-bottom: 30px;
 }
 
 #startCont button {
     padding: 15px 30px;
-    background-color: var(--hot-pink);
+    background-color: var(--light-teal);
     color: white;
     border: none;
     border-radius: 15px;
@@ -75,7 +75,16 @@ main {
 }
 
 #startCont button:hover {
-    background-color: var(--light-pink);
+    background-color: var(--dark-teal);
+}
+
+#questCont {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--dark-brown);
+    font-size: 20px;
 }
 
 /* FOOTER */
@@ -88,8 +97,10 @@ footer {
     top: 100vh;
     width: 100%;
     padding: 30px 50px;
-    background-color: var(--light-gray);
+    background-color: var(--light-brown);
+    color: white;
     font-size: 20px;
-    color: var(--hot-pink);
+    font-weight: bold;
+
 }
 
