@@ -61,7 +61,7 @@ main {
 }
 
 #startCont p {
-    font-size: 20px;
+    font-size: 24px;
     margin-bottom: 30px;
 }
 
@@ -82,9 +82,28 @@ main {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
     color: var(--dark-brown);
+    font-size: 30px;
+}
+
+#questCont p {
+    margin-bottom: 30px;
+}
+
+#ansBtn {
+    border: none;
+    border-radius: 15px;
+    background-color: var(--light-teal);
+    color: white;
+    padding: 15px;
+    margin: 5px;
+    width: 40%;
     font-size: 20px;
+}
+
+#ansBtn:hover {
+    background-color: var(--dark-teal);
 }
 
 /* FOOTER */

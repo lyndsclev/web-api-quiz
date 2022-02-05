@@ -36,10 +36,12 @@ function start () {
     var ansOneArr = ["Over 10 billion", "5", "100,000", "None of the above"];
 
     for (var i = 0; i < ansOneArr.length; i++) {
-        var ansBtn = document.createElement("button")
-        ansBtn.innerHTML = ansOneArr[i];
-        questCont.appendChild(ansBtn);
+        var ansBtnOne = document.createElement("button")
+        ansBtnOne.innerHTML = ansOneArr[i];
+        ansBtnOne.id = "ansBtn";
+        questCont.appendChild(ansBtnOne);
     };
+
 
     // question 2
 
