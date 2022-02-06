@@ -4,6 +4,8 @@ var startBtnEl = document.querySelector("#startBtnEl");
 var startCont = document.querySelector("#startCont");
 var questCont = document.querySelector("#questCont");
 
+var score = 0; 
+
 var time = 60;
 var timerEl = document.querySelector("#timerEl");
 var timer;
@@ -38,17 +40,34 @@ function start () {
     for (var i = 0; i < ansOneArr.length; i++) {
         var ansBtnOne = document.createElement("button")
         ansBtnOne.innerHTML = ansOneArr[i];
-        ansBtnOne.id = "ansBtn";
+        ansBtnOne.id = "ansBtnOne" + i;
+        ansBtnOne.className = "ansBtn";
         questCont.appendChild(ansBtnOne);
-    };
+        }
 
+        document.getElementById("ansBtnOne0").onclick = ansBtnOne0Clicked;
+        function ansBtnOne0Clicked () {
+
+            console.log("right answer!");
+            score= score + 5; 
+            console.log(score);
+        }
+
+        document.getElementById("ansBtnOne1").onclick = ansBtnOne1Clicked;
+        function ansBtnOne1Clicked () {
+
+            console.log("wrong answer!");
+            time = time -10;
+            console.log(time);
+        }
+
+    };
 
     // question 2
 
     // question 3
 
     // question 4
-}
 
 startBtnEl.addEventListener('click', start);
 

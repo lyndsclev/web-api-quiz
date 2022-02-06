@@ -91,7 +91,7 @@ main {
     margin-bottom: 30px;
 }
 
-#ansBtn {
+.ansBtn {
     border: none;
     border-radius: 15px;
     background-color: var(--light-teal);
@@ -102,9 +102,10 @@ main {
     font-size: 20px;
 }
 
-#ansBtn:hover {
+.ansBtn:hover {
     background-color: var(--dark-teal);
 }
+
 
 /* FOOTER */
 
