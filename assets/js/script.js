@@ -24,7 +24,7 @@ function clock () {
     if (time <= 0) {
         endQuiz ();
     }
-}
+};
 
 // start
 
@@ -72,6 +72,8 @@ function start () {
             score = score + 5; 
             console.log(score);
 
+            nextQuest.onclick = questTwo;
+
 
         }
 
@@ -86,30 +88,37 @@ function start () {
 
             time = time - 10; 
             console.log(time);
-        }   
 
-        }
+            nextQuest.onclick = questTwo;
+        };   
 
+};   
 
-   
+// question 2
 
+function questTwo () {
 
+    resCont.innerHTML = "";
 
+    var questTwo = document.createElement("p");
+    questTwo.textContent = "QUESTION TWO TO GO HERE";
+    questCont.appendChild(questTwo);
+}
 
+// question 3
 
-     
+function questThree () {}
 
-    // question 2
+// question 4
 
-    // question 3
-
-    // question 4
+function questFour() {}
 
 startBtnEl.addEventListener('click', start);
 
 // end quiz
 
 function endQuiz () {
+    
     // stop timer 
     clearInterval(timer);
 }
