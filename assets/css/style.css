@@ -133,6 +133,35 @@ main {
     background-color: var(--dark-teal);
 }
 
+#saveScore {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#saveScore p {
+    margin-right: 20px;
+    font-size: 24px;
+}
+
+#initials {
+    font-size: 20px;
+}
+
+#saveScore button {
+    border: none;
+    background-color: var(--light-teal);
+    color: white;
+    font-size: 20px;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin-top: 2px;
+}
+
+#saveScore button:hover {
+    background-color: var(--dark-teal);
+}
 
 /* FOOTER */
 

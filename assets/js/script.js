@@ -12,6 +12,9 @@ nextQuest.textContent = "NEXT QUESTION";
 
 var score = 0; 
 var saveScore = document.querySelector("#saveScore");
+var saveP = document.querySelector("#saveP");
+var initials = document.querySelector("#initials");
+var submit = document.querySelector("#submit");
 
 var time = 60;
 var timerEl = document.querySelector("#timerEl");
@@ -213,8 +216,9 @@ function endQuiz () {
     yourScore.style.color = "purple";
     endCont.appendChild(yourScore);
 
-    saveScore.classList.remove("hide");
-
+    saveP.classList.remove("hide");
+    initials.classList.remove("hide");
+    submit.classList.remove("hide");
 
     
 };
