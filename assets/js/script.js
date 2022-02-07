@@ -7,7 +7,7 @@ var resCont = document.querySelector("#resCont");
 
 var nextQuest = document.createElement("button");
 nextQuest.id = "nextBtn";
-nextQuest.textContent = "Next Question";
+nextQuest.textContent = "NEXT QUESTION";
 
 var score = 0; 
 
@@ -25,6 +25,41 @@ function clock () {
         endQuiz ();
     }
 };
+
+// correct answer 
+
+function ansChoiceR () {
+    var resAlertR = document.createElement("h2");
+    resAlertR.textContent = "Correct!";
+    resAlertR.id = "resAlert";
+    resAlertR.style.color = "green";
+    resCont.appendChild(resAlertR);
+    questCont.innerHTML = "";          
+    resCont.appendChild(nextQuest);
+
+    score = score + 5; 
+
+    console.log(score);
+    console.log(time);
+};
+
+// wrong answer 
+
+function ansChoiceW () {
+    var resAlertW = document.createElement("h2");
+    resAlertW.textContent = "Wrong!";
+    resAlertW.id = "resAlert";
+    resAlertW.style.color = "red";
+    resCont.appendChild(resAlertW);
+    questCont.innerHTML = "";
+    resCont.appendChild(nextQuest);
+
+    time = time - 10; 
+
+    console.log(score);
+    console.log(time);
+
+};   
 
 // start
 
@@ -44,7 +79,7 @@ function start () {
     questOne.textContent = "How many donuts are made in the US each year?";
     questCont.appendChild(questOne);
 
-    var ansOneArr = ["Over 10 billion", "5", "100,000", "None of the above"];
+    var ansOneArr = ["Over 10 billion", "5", "100,000", "697,885"];
 
     for (var i = 0; i < ansOneArr.length; i++) {
         var ansBtnOne = document.createElement("button")
@@ -59,38 +94,7 @@ function start () {
         document.querySelector("#ansBtnOne2").onclick = ansChoiceW;
         document.querySelector("#ansBtnOne3").onclick = ansChoiceW;
 
-        
-        function ansChoiceR () {
-            var resAlertR = document.createElement("h2");
-            resAlertR.textContent = "Correct!";
-            resAlertR.id = "resAlert";
-            resAlertR.style.color = "green";
-            resCont.appendChild(resAlertR);
-            questCont.innerHTML = "";          
-            resCont.appendChild(nextQuest);
-
-            score = score + 5; 
-            console.log(score);
-
-            nextQuest.onclick = questTwo;
-
-
-        }
-
-        function ansChoiceW () {
-            var resAlertW = document.createElement("h2");
-            resAlertW.textContent = "Wrong!";
-            resAlertW.id = "resAlert";
-            resAlertW.style.color = "red";
-            resCont.appendChild(resAlertW);
-            questCont.innerHTML = "";
-            resCont.appendChild(nextQuest);
-
-            time = time - 10; 
-            console.log(time);
-
-            nextQuest.onclick = questTwo;
-        };   
+        nextQuest.onclick = questTwo;
 
 };   
 
@@ -101,17 +105,87 @@ function questTwo () {
     resCont.innerHTML = "";
 
     var questTwo = document.createElement("p");
-    questTwo.textContent = "QUESTION TWO TO GO HERE";
+    questTwo.textContent = "How many people with the last name of DOUGHNUT or DONUT are currently living in the US?";
     questCont.appendChild(questTwo);
-}
+
+    var ansTwoArr = ["19", "85", "300", "10"];
+
+    for (var i = 0; i < ansTwoArr.length; i++) {
+        var ansBtnTwo = document.createElement("button")
+        ansBtnTwo.innerHTML = ansTwoArr[i];
+        ansBtnTwo.id = "ansBtnTwo" + i;
+        ansBtnTwo.className = "ansBtn";
+        questCont.appendChild(ansBtnTwo);
+        }
+
+        document.querySelector("#ansBtnTwo0").onclick = ansChoiceW;
+        document.querySelector("#ansBtnTwo1").onclick = ansChoiceW;
+        document.querySelector("#ansBtnTwo2").onclick = ansChoiceW;
+        document.querySelector("#ansBtnTwo3").onclick = ansChoiceR;
+
+        nextQuest.onclick = questThree;
+
+};
 
 // question 3
 
-function questThree () {}
+function questThree () {
+    
+    resCont.innerHTML = "";
+
+    var questThree = document.createElement("p");
+    questThree.textContent = "Which US city has the most donut shops per person?";
+    questCont.appendChild(questThree);
+
+    var ansThreeArr = ["Los Angeles", "Boston", "New Orleans", "Seattle"];
+
+    for (var i = 0; i < ansThreeArr.length; i++) {
+        var ansBtnThree = document.createElement("button")
+        ansBtnThree.innerHTML = ansThreeArr[i];
+        ansBtnThree.id = "ansBtnThree" + i;
+        ansBtnThree.className = "ansBtn";
+        questCont.appendChild(ansBtnThree);
+        }
+
+        document.querySelector("#ansBtnThree0").onclick = ansChoiceW;
+        document.querySelector("#ansBtnThree1").onclick = ansChoiceR;
+        document.querySelector("#ansBtnThree2").onclick = ansChoiceW;
+        document.querySelector("#ansBtnThree3").onclick = ansChoiceW;
+
+        nextQuest.onclick = questFour;
+};
 
 // question 4
 
-function questFour() {}
+function questFour() {
+
+    resCont.innerHTML = "";
+
+    var questFour = document.createElement("p");
+    questFour.textContent = "What did the Dutch originally call donuts?";
+    questCont.appendChild(questFour);
+
+    var ansFourArr = ["Olykoeks", "Nun's Farts", "Sweet Bagels", "Hoopties"];
+
+    for (var i = 0; i < ansFourArr.length; i++) {
+        var ansBtnFour = document.createElement("button")
+        ansBtnFour.innerHTML = ansFourArr[i];
+        ansBtnFour.id = "ansBtnFour" + i;
+        ansBtnFour.className = "ansBtn";
+        questCont.appendChild(ansBtnFour);
+        }
+
+        document.querySelector("#ansBtnFour0").onclick = ansChoiceR;
+        document.querySelector("#ansBtnFour1").onclick = ansChoiceW;
+        document.querySelector("#ansBtnFour2").onclick = ansChoiceW;
+        document.querySelector("#ansBtnFour3").onclick = ansChoiceW;
+
+        
+        // document.querySelector("#resAlert").remove;
+        nextQuest.textContent = "SEE RESULTS";
+        nextQuest.onclick = endQuiz;
+
+};
 
 startBtnEl.addEventListener('click', start);
 
@@ -121,7 +195,10 @@ function endQuiz () {
     
     // stop timer 
     clearInterval(timer);
+    timerEl.remove;
 }
+
+endQuiz ();
 
 // --- 
 // local storage
