@@ -23,6 +23,12 @@ function clock () {
     timerEl.textContent = "TIME: " + time;
 
     if (time <= 0) {
+
+        questCont.innerHTML = "";
+        resCont.innerHTNL = "";
+
+        alert("Your timer has run out! The quiz has ended click OK see your score.");
+
         endQuiz ();
     }
 };
@@ -210,7 +216,7 @@ function endQuiz () {
 
     
     
-}
+};
 
 
 
