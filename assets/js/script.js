@@ -3,6 +3,11 @@
 var startBtnEl = document.querySelector("#startBtnEl");
 var startCont = document.querySelector("#startCont");
 var questCont = document.querySelector("#questCont");
+var resCont = document.querySelector("#resCont");
+
+var nextQuest = document.createElement("button");
+nextQuest.id = "nextBtn";
+nextQuest.textContent = "Next Question";
 
 var score = 0; 
 
@@ -15,6 +20,10 @@ var timer;
 function clock () {
     time--; 
     timerEl.textContent = "TIME: " + time;
+
+    if (time <= 0) {
+        endQuiz ();
+    }
 }
 
 // start
@@ -23,7 +32,7 @@ function start () {
 
     // start timer
 
-    timer - setInterval(clock, 1000);
+    timer = setInterval(clock, 1000);
     
     // remove start content
 
@@ -44,24 +53,51 @@ function start () {
         ansBtnOne.className = "ansBtn";
         questCont.appendChild(ansBtnOne);
         }
+        
+        document.querySelector("#ansBtnOne0").onclick = ansChoiceR;
+        document.querySelector("#ansBtnOne1").onclick = ansChoiceW;
+        document.querySelector("#ansBtnOne2").onclick = ansChoiceW;
+        document.querySelector("#ansBtnOne3").onclick = ansChoiceW;
 
-        document.getElementById("ansBtnOne0").onclick = ansBtnOne0Clicked;
-        function ansBtnOne0Clicked () {
+        
+        function ansChoiceR () {
+            var resAlertR = document.createElement("h2");
+            resAlertR.textContent = "Correct!";
+            resAlertR.id = "resAlert";
+            resAlertR.style.color = "green";
+            resCont.appendChild(resAlertR);
+            questCont.innerHTML = "";          
+            resCont.appendChild(nextQuest);
 
-            console.log("right answer!");
-            score= score + 5; 
+            score = score + 5; 
             console.log(score);
+
+
         }
 
-        document.getElementById("ansBtnOne1").onclick = ansBtnOne1Clicked;
-        function ansBtnOne1Clicked () {
+        function ansChoiceW () {
+            var resAlertW = document.createElement("h2");
+            resAlertW.textContent = "Wrong!";
+            resAlertW.id = "resAlert";
+            resAlertW.style.color = "red";
+            resCont.appendChild(resAlertW);
+            questCont.innerHTML = "";
+            resCont.appendChild(nextQuest);
 
-            console.log("wrong answer!");
-            time = time -10;
+            time = time - 10; 
             console.log(time);
+        }   
+
         }
 
-    };
+
+   
+
+
+
+
+
+     
 
     // question 2
 
@@ -71,7 +107,12 @@ function start () {
 
 startBtnEl.addEventListener('click', start);
 
-// end quiz 
+// end quiz
+
+function endQuiz () {
+    // stop timer 
+    clearInterval(timer);
+}
 
 // --- 
 // local storage

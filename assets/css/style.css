@@ -48,6 +48,10 @@ main {
     margin: 50px 100px;
 }
 
+.hide {
+    display: none;
+}
+
 #startCont {
     display: flex;
     flex-wrap: wrap;
