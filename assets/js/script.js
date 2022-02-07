@@ -4,6 +4,7 @@ var startBtnEl = document.querySelector("#startBtnEl");
 var startCont = document.querySelector("#startCont");
 var questCont = document.querySelector("#questCont");
 var resCont = document.querySelector("#resCont");
+var endCont = document.querySelector("#resCont");
 
 var nextQuest = document.createElement("button");
 nextQuest.id = "nextBtn";
@@ -46,7 +47,7 @@ function ansChoiceR () {
 // wrong answer 
 
 function ansChoiceW () {
-    var resAlertW = document.createElement("h2");
+   var resAlertW = document.createElement("h2");
     resAlertW.textContent = "Wrong!";
     resAlertW.id = "resAlert";
     resAlertW.style.color = "red";
@@ -180,9 +181,7 @@ function questFour() {
         document.querySelector("#ansBtnFour2").onclick = ansChoiceW;
         document.querySelector("#ansBtnFour3").onclick = ansChoiceW;
 
-        
-        // document.querySelector("#resAlert").remove;
-        nextQuest.textContent = "SEE RESULTS";
+        nextQuest.textContent = "THE QUIZ HAS ENDED! CLICK FOR RESULTS";
         nextQuest.onclick = endQuiz;
 
 };
@@ -193,12 +192,27 @@ startBtnEl.addEventListener('click', start);
 
 function endQuiz () {
     
-    // stop timer 
+    // stop and remove timer 
+
     clearInterval(timer);
-    timerEl.remove;
+    timerEl.innerHTML="";
+
+    // clear res and button
+
+    resCont.innerHTML = "";
+
+    // display score
+
+    var yourScore = document.createElement("h2");
+    yourScore.textContent = "You scored: " + score + "." + " Great Job!";
+    yourScore.style.color = "purple";
+    endCont.appendChild(yourScore);
+
+    
+    
 }
 
-endQuiz ();
+
 
 // --- 
 // local storage
