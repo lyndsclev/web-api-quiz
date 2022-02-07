@@ -11,6 +11,7 @@ nextQuest.id = "nextBtn";
 nextQuest.textContent = "NEXT QUESTION";
 
 var score = 0; 
+var saveScore = document.querySelector("#saveScore");
 
 var time = 60;
 var timerEl = document.querySelector("#timerEl");
@@ -192,8 +193,6 @@ function questFour() {
 
 };
 
-startBtnEl.addEventListener('click', start);
-
 // end quiz
 
 function endQuiz () {
@@ -214,13 +213,11 @@ function endQuiz () {
     yourScore.style.color = "purple";
     endCont.appendChild(yourScore);
 
-    
+    saveScore.classList.remove("hide");
+
+
     
 };
 
+startBtnEl.addEventListener('click', start);
 
-
-// --- 
-// local storage
-// save score
-// high scores 
