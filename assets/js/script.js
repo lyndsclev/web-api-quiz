@@ -219,9 +219,37 @@ function endQuiz () {
     saveP.classList.remove("hide");
     initials.classList.remove("hide");
     submit.classList.remove("hide");
-
-    
 };
+
+function storeScore () {
+    
+    // get value of input box
+
+    var initialsInput = initials.value;
+
+    // empty array for high scores
+
+    var highScoresArr = [];
+
+    // create object with score and initials and push to highScoresArr
+
+    var newHighScore = {
+        initials: initialsInput,
+        score: score   
+    };
+
+    highScoresArr.push(newHighScore);
+
+    console.log(highScoresArr);
+
+    // save to localStorage
+
+    window.localStorage.setItem("highScoresArr", JSON.stringify(highScoresArr));
+
+}
+
+submit.onclick = storeScore; 
+
 
 startBtnEl.addEventListener('click', start);
 
