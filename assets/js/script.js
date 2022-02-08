@@ -5,6 +5,7 @@ var startCont = document.querySelector("#startCont");
 var questCont = document.querySelector("#questCont");
 var resCont = document.querySelector("#resCont");
 var endCont = document.querySelector("#resCont");
+var scoresOrStart = document.querySelector("#scoresOrStart");
 
 var nextQuest = document.createElement("button");
 nextQuest.id = "nextBtn";
@@ -16,6 +17,11 @@ var saveScore = document.querySelector("#saveScore");
 var saveP = document.querySelector("#saveP");
 var initials = document.querySelector("#initials");
 var submit = document.querySelector("#submit");
+var noThanks = document.querySelector("#noThanks");
+var highScoresArr;
+
+var viewScoreBtn = document.createElement("button");
+var restartQuizBtn = document.createElement("button");
 
 var time = 60;
 var timerEl = document.querySelector("#timerEl");
@@ -219,6 +225,7 @@ function endQuiz () {
     saveP.classList.remove("hide");
     initials.classList.remove("hide");
     submit.classList.remove("hide");
+    noThanks.classList.remove("hide");
 };
 
 function storeScore () {
@@ -229,7 +236,7 @@ function storeScore () {
 
     // get existing scores from local storage or if not any set array to empty 
 
-    var highScoresArr = JSON.parse(window.localStorage.getItem("highScoresArr")) || [];
+    highScoresArr = JSON.parse(window.localStorage.getItem("highScoresArr")) || [];
 
     // create object with score and initials and push to highScoresArr
 
@@ -250,10 +257,37 @@ function storeScore () {
 
     yourScore.textContent = "Thanks for playing!";
 
+    viewHighOrStart (); 
+
+};
+
+// ask if they would like to view high scores or start over 
+
+function viewHighOrStart () {
+
+    // view high scores button 
+
+    viewScoreBtn.textContent = "VIEW HIGH SCORES";
+    viewScoreBtn.id = "scoreOrStartBtn";
+    scoresOrStart.appendChild(viewScoreBtn);
+
+    restartQuizBtn.textContent = "RESTART QUIZ";
+    restartQuizBtn.id = "scoreOrStartBtn";
+    scoresOrStart.appendChild(restartQuizBtn);
+    
+};
+
+function viewHighScores () {
+
 }
 
+function restartQuiz () {
+    location.reload(); 
+};
+
+
+restartQuizBtn.onclick = restartQuiz; 
 submit.onclick = storeScore; 
-
-
+noThanks.onclick = restartQuiz;
 startBtnEl.addEventListener('click', start);
 
