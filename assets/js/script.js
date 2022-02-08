@@ -1,5 +1,4 @@
 // variables 
-
 var startBtnEl = document.querySelector("#startBtnEl");
 var startCont = document.querySelector("#startCont");
 var questCont = document.querySelector("#questCont");
@@ -28,7 +27,6 @@ var timerEl = document.querySelector("#timerEl");
 var timer;
 
 // timer 
-
 function clock () {
     time--; 
     timerEl.textContent = "TIME: " + time;
@@ -45,7 +43,6 @@ function clock () {
 };
 
 // correct answer 
-
 function ansChoiceR () {
     var resAlertR = document.createElement("h2");
     resAlertR.textContent = "Correct!";
@@ -56,13 +53,9 @@ function ansChoiceR () {
     resCont.appendChild(nextQuest);
 
     score = score + 5; 
-
-    console.log(score);
-    console.log(time);
 };
 
 // wrong answer 
-
 function ansChoiceW () {
    var resAlertW = document.createElement("h2");
     resAlertW.textContent = "Wrong!";
@@ -73,26 +66,18 @@ function ansChoiceW () {
     resCont.appendChild(nextQuest);
 
     time = time - 10; 
-
-    console.log(score);
-    console.log(time);
-
 };   
 
 // start
-
 function start () {
 
     // start timer
-
     timer = setInterval(clock, 1000);
     
     // remove start content
-
     startCont.remove();
 
     // question 1
-
     var questOne = document.createElement("p");
     questOne.textContent = "How many donuts are made in the US each year?";
     questCont.appendChild(questOne);
@@ -113,11 +98,9 @@ function start () {
         document.querySelector("#ansBtnOne3").onclick = ansChoiceW;
 
         nextQuest.onclick = questTwo;
-
 };   
 
 // question 2
-
 function questTwo () {
 
     resCont.innerHTML = "";
@@ -142,11 +125,9 @@ function questTwo () {
         document.querySelector("#ansBtnTwo3").onclick = ansChoiceR;
 
         nextQuest.onclick = questThree;
-
 };
 
 // question 3
-
 function questThree () {
     
     resCont.innerHTML = "";
@@ -174,7 +155,6 @@ function questThree () {
 };
 
 // question 4
-
 function questFour() {
 
     resCont.innerHTML = "";
@@ -200,24 +180,19 @@ function questFour() {
 
         nextQuest.textContent = "THE QUIZ HAS ENDED! CLICK FOR RESULTS";
         nextQuest.onclick = endQuiz;
-
 };
 
 // end quiz
-
 function endQuiz () {
     
     // stop and remove timer 
-
     clearInterval(timer);
     timerEl.innerHTML="";
 
     // clear res and button
-
     resCont.innerHTML = "";
 
     // display score
-
     yourScore.textContent = "You scored: " + score + "." + " Great Job!";
     yourScore.style.color = "purple";
     endCont.appendChild(yourScore);
@@ -231,15 +206,17 @@ function endQuiz () {
 function storeScore () {
     
     // get value of input box
-
     var initialsInput = initials.value;
 
-    // get existing scores from local storage or if not any set array to empty 
+    if (!initialsInput) {
+        alert("You didn't enter your initials!")
+        return endQuiz();
+    };
 
+    // get existing scores from local storage or if not any set array to empty 
     highScoresArr = JSON.parse(window.localStorage.getItem("highScoresArr")) || [];
 
     // create object with score and initials and push to highScoresArr
-
     var newHighScore = {
         initials: initialsInput,
         score: score   
@@ -248,25 +225,22 @@ function storeScore () {
     highScoresArr.push(newHighScore);
 
     // save to localStorage
-
     window.localStorage.setItem("highScoresArr", JSON.stringify(highScoresArr));
 
     saveP.className = "hide";
     initials.className = "hide";
     submit.className = "hide";
+    noThanks.className = "hide";
 
     yourScore.textContent = "Thanks for playing!";
 
     viewHighOrStart (); 
-
 };
 
 // ask if they would like to view high scores or start over 
-
 function viewHighOrStart () {
 
     // view high scores button 
-
     viewScoreBtn.textContent = "VIEW HIGH SCORES";
     viewScoreBtn.id = "scoreOrStartBtn";
     scoresOrStart.appendChild(viewScoreBtn);
@@ -279,13 +253,13 @@ function viewHighOrStart () {
 
 function viewHighScores () {
 
-}
+};
 
 function restartQuiz () {
     location.reload(); 
 };
 
-
+// event listeners
 restartQuizBtn.onclick = restartQuiz; 
 submit.onclick = storeScore; 
 noThanks.onclick = restartQuiz;
