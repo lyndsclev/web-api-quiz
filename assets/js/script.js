@@ -26,9 +26,6 @@ var clearBtn = document.createElement("button");
 clearBtn.id = "clearBtn";
 clearBtn.textContent = "CLEAR HIGH SCORES";
 
-var vHS = document.querySelector("#vHS");
-var vHSH2 = document.querySelector("#vHSH2");
-
 var viewScoreBtn = document.createElement("button");
 var restartQuizBtn = document.createElement("button");
 
@@ -41,7 +38,7 @@ function clock () {
     time--; 
     timerEl.textContent = "TIME: " + time;
 
-    if (time <= 0) {
+    if (time <= -1) {
 
         questCont.innerHTML = "";
         resCont.innerHTNL = "";
@@ -284,17 +281,6 @@ function viewHighScores () {
     clear.appendChild(clearBtn);
 };
 
-// view high scores via text in header 
-function vHSClick () {
-
-    startCont.remove();
-    var vHSH2El = document.createElement("h2");
-    vHSH2El.textContent = "High Scores";
-    vHSH2El.style.color = "purple";
-    vHSH2.appendChild(vHSH2El);
-
-    viewHighScores ();
-};
 
 function restartQuiz () {
     location.reload(); 
@@ -311,6 +297,5 @@ restartQuizBtn.onclick = restartQuiz;
 submit.onclick = storeScore; 
 noThanks.onclick = restartQuiz;
 startBtnEl.addEventListener('click', start);
-vHS.onclick = vHSClick;
 clearBtn.onclick = clearHighScores;
 
