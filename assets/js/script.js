@@ -20,6 +20,11 @@ var initials = document.querySelector("#initials");
 var submit = document.querySelector("#submit");
 var noThanks = document.querySelector("#noThanks");
 var highScoresArr;
+var clear = document.querySelector("#clear")
+
+var clearBtn = document.createElement("button");
+clearBtn.id = "clearBtn";
+clearBtn.textContent = "CLEAR HIGH SCORES";
 
 var vHS = document.querySelector("#vHS");
 var vHSH2 = document.querySelector("#vHSH2");
@@ -253,8 +258,7 @@ function viewHighOrStart () {
 
     restartQuizBtn.textContent = "RESTART QUIZ";
     restartQuizBtn.id = "scoreOrStartBtn";
-    scoresOrStart.appendChild(restartQuizBtn);
-    
+    scoresOrStart.appendChild(restartQuizBtn);  
 };
 
 function viewHighScores () {
@@ -275,8 +279,12 @@ function viewHighScores () {
         scoreListItem.textContent = "Donut Quiz Master: " + highScoresArr[i].initials + ", Score: " + highScoresArr[i].score;
         scoreEl.appendChild(scoreListItem);
         }
+
+    // show clear high scores btn
+    clear.appendChild(clearBtn);
 };
 
+// view high scores via text in header 
 function vHSClick () {
 
     startCont.remove();
@@ -292,6 +300,11 @@ function restartQuiz () {
     location.reload(); 
 };
 
+function clearHighScores () {
+    window.localStorage.removeItem("highScoresArr");
+    restartQuiz ();
+};
+
 // event listeners
 viewScoreBtn.onclick = viewHighScores;
 restartQuizBtn.onclick = restartQuiz; 
@@ -299,4 +312,5 @@ submit.onclick = storeScore;
 noThanks.onclick = restartQuiz;
 startBtnEl.addEventListener('click', start);
 vHS.onclick = vHSClick;
+clearBtn.onclick = clearHighScores;
 
