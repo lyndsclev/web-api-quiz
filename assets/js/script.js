@@ -10,6 +10,7 @@ var nextQuest = document.createElement("button");
 nextQuest.id = "nextBtn";
 nextQuest.textContent = "NEXT QUESTION";
 
+var yourScore = document.createElement("h2");
 var score = 0; 
 var saveScore = document.querySelector("#saveScore");
 var saveP = document.querySelector("#saveP");
@@ -211,7 +212,6 @@ function endQuiz () {
 
     // display score
 
-    var yourScore = document.createElement("h2");
     yourScore.textContent = "You scored: " + score + "." + " Great Job!";
     yourScore.style.color = "purple";
     endCont.appendChild(yourScore);
@@ -227,9 +227,9 @@ function storeScore () {
 
     var initialsInput = initials.value;
 
-    // empty array for high scores
+    // get existing scores from local storage or if not any set array to empty 
 
-    var highScoresArr = [];
+    var highScoresArr = JSON.parse(window.localStorage.getItem("highScoresArr")) || [];
 
     // create object with score and initials and push to highScoresArr
 
@@ -240,11 +240,15 @@ function storeScore () {
 
     highScoresArr.push(newHighScore);
 
-    console.log(highScoresArr);
-
     // save to localStorage
 
     window.localStorage.setItem("highScoresArr", JSON.stringify(highScoresArr));
+
+    saveP.className = "hide";
+    initials.className = "hide";
+    submit.className = "hide";
+
+    yourScore.textContent = "Thanks for playing!";
 
 }
 
