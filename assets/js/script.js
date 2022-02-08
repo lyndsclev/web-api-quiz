@@ -5,6 +5,8 @@ var questCont = document.querySelector("#questCont");
 var resCont = document.querySelector("#resCont");
 var endCont = document.querySelector("#resCont");
 var scoresOrStart = document.querySelector("#scoresOrStart");
+var highScores = document.querySelector("#highScores");
+var scoreEl = document.querySelector("#scoreEl");
 
 var nextQuest = document.createElement("button");
 nextQuest.id = "nextBtn";
@@ -18,6 +20,9 @@ var initials = document.querySelector("#initials");
 var submit = document.querySelector("#submit");
 var noThanks = document.querySelector("#noThanks");
 var highScoresArr;
+
+var vHS = document.querySelector("#vHS");
+var vHSH2 = document.querySelector("#vHSH2");
 
 var viewScoreBtn = document.createElement("button");
 var restartQuizBtn = document.createElement("button");
@@ -207,7 +212,8 @@ function storeScore () {
     
     // get value of input box
     var initialsInput = initials.value;
-
+    
+    // alert if left blank
     if (!initialsInput) {
         alert("You didn't enter your initials!")
         return endQuiz();
@@ -253,6 +259,33 @@ function viewHighOrStart () {
 
 function viewHighScores () {
 
+    viewScoreBtn.className = "hide";
+    restartQuizBtn.className = "hide";
+    yourScore.textContent = "High Scores";
+
+    highScores.classList.remove("hide");
+    scoreEl.classList.remove("hide");
+
+    // get existing scores 
+    highScoresArr = JSON.parse(window.localStorage.getItem("highScoresArr"));
+
+    // display scores on page
+    for (var i = 0; i < highScoresArr.length; i++) {
+        var scoreListItem = document.createElement("li");
+        scoreListItem.textContent = "Donut Quiz Master: " + highScoresArr[i].initials + ", Score: " + highScoresArr[i].score;
+        scoreEl.appendChild(scoreListItem);
+        }
+};
+
+function vHSClick () {
+
+    startCont.remove();
+    var vHSH2El = document.createElement("h2");
+    vHSH2El.textContent = "High Scores";
+    vHSH2El.style.color = "purple";
+    vHSH2.appendChild(vHSH2El);
+
+    viewHighScores ();
 };
 
 function restartQuiz () {
@@ -260,8 +293,10 @@ function restartQuiz () {
 };
 
 // event listeners
+viewScoreBtn.onclick = viewHighScores;
 restartQuizBtn.onclick = restartQuiz; 
 submit.onclick = storeScore; 
 noThanks.onclick = restartQuiz;
 startBtnEl.addEventListener('click', start);
+vHS.onclick = vHSClick;
 
